@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def agruparPixels(pixelsDesagrupados):
     agrupados = {}
 
-    for i in range(0, 255, 1):
+    for i in range(0, 256, 1):
         agrupados[f'{i}'] = 0
     
     for pixel in pixelsDesagrupados:
