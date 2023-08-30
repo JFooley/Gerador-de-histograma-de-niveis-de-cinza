@@ -1,5 +1,5 @@
 from PIL import Image
-import os
+import matplotlib.pyplot as plt
 
 def agruparPixels(pixelsDesagrupados):
     agrupados = {}
@@ -38,13 +38,27 @@ def lerPixels():
     
     return lista
 
+
+# Transforma a imagem em um array de niveis de cinza
 imagem = Image.open('imagem.jpg')
 largura, altura = imagem.size
-
 pixels = lerPixels()
-pixels.sort()
 
+# Gera um dicinário com a quantidade de pixels por valore de cinza da imagem (histograma)
 pixelsAgrupados = agruparPixels(pixels)
 
-print(pixelsAgrupados)
+# for pixel in pixelsAgrupados.values():
+#     print(pixel)
+
+# Gera o gráfico do histograma
+eixoX = list(pixelsAgrupados.keys())
+eixoY = list(pixelsAgrupados.values())
+
+plt.bar(eixoX, eixoY, color='blue')
+plt.xlabel('Niveis de cinza')
+plt.ylabel('Pixels')
+plt.title('Histograma da imagem')
+## plt.xticks(rotation=45)  # Rotacionar rótulos do eixo X para melhor legibilidade
+plt.show()
+
 
