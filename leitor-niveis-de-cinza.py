@@ -47,18 +47,14 @@ pixels = lerPixels()
 # Gera um dicinário com a quantidade de pixels por valore de cinza da imagem (histograma)
 pixelsAgrupados = agruparPixels(pixels)
 
-# for pixel in pixelsAgrupados.values():
-#     print(pixel)
-
 # Gera o gráfico do histograma
 eixoX = list(pixelsAgrupados.keys())
 eixoY = list(pixelsAgrupados.values())
 
-plt.bar(eixoX, eixoY, color='blue')
+plt.bar(eixoX, eixoY, color='black')
 plt.xlabel('Niveis de cinza')
 plt.ylabel('Pixels')
 plt.title('Histograma da imagem')
-## plt.xticks(rotation=45)  # Rotacionar rótulos do eixo X para melhor legibilidade
 plt.show()
 
 
