@@ -12,6 +12,12 @@ def agruparPixels(pixelsDesagrupados):
 
     return agrupados
 
+def normalizarPixels(pixels : dict, totalSize):
+    for i in range(0, 256, 1):
+        pixels[f'{i}'] /= totalSize
+
+    return pixels
+
 def lerPixels():
     print('Iniciando leitura')
     
@@ -47,9 +53,13 @@ pixels = lerPixels()
 # Gera um dicinário com a quantidade de pixels por valore de cinza da imagem (histograma)
 pixelsAgrupados = agruparPixels(pixels)
 
+# Normaliza o histograma
+totalPixels = largura * altura
+pixelsNormalizados = normalizarPixels(pixelsAgrupados, totalPixels)
+
 # Gera o gráfico do histograma
-eixoX = list(pixelsAgrupados.keys())
-eixoY = list(pixelsAgrupados.values())
+eixoX = list(pixelsNormalizados.keys())
+eixoY = list(pixelsNormalizados.values())
 
 plt.bar(eixoX, eixoY, color='black')
 plt.xlabel('Niveis de cinza')
